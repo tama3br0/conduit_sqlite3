@@ -1,0 +1,36 @@
+<div class="editor-page">
+    <div class="container page">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-xs-12">
+                <!-- <ul class="error-messages">
+                    <li>That title is required</li>
+                </ul> -->
+
+
+                <%= form_with model:@article, url:update_article_path(@article), local:true do |form| %>
+                    <fieldset>
+                        <p><%= form.label :title, "タイトル", class:"form-group" %></p>
+                        <p><%= form.text_field :title, class:"form-control form-control-lg" %></p>
+                    </fieldset>
+                    <fieldset>
+                        <p><%= form.label :subtitle, "サブタイトル", class:"form-group" %></p>
+                        <p><%= form.text_field :subtitle, class:"form-control"%></p>
+                    </fieldset>
+                    <fieldset>
+                        <p><%= form.label :body, "本文", class:"form-group" %></p>
+                        <p><%= form.text_area :body, class:"form-control"%></p>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <!-- <input type="text" class="form-control" placeholder="Enter tags" /> -->
+                        <div class="tag-list">
+                            <span class="tag-default tag-pill">
+                                <i class="ion-close-round"></i> tag
+                            </span>
+                        </div>
+                    </fieldset>
+                    <p><%= form.submit "編集", class:"btn btn-lg pull-xs-right btn-primary" %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
