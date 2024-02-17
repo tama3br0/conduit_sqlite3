@@ -10,13 +10,17 @@ Rails.application.routes.draw do
     # PATCH  /articles/:id         # 特定の記事を更新するためのアクション
     # DELETE /articles/:id         # 特定の記事を削除するためのアクション
 
+    # Articles
+    get    "/",              to: "articles#index",    as: "articles"
     get    "/new",           to: "articles#new",      as: "new_article"
     post   "/create",        to: "articles#create",   as: "create_article"
-
     get    "/:id",           to: "articles#show",     as: "show_article"
     get    "/:id/edit",      to: "articles#edit",     as: "edit_article"
     patch  "/update/:id",    to: "articles#update",   as: "update_article"
-
     delete "delete/:id",     to: "articles#destroy",  as: "delete_article"
+
+    # Users
+    # get    "/signup",        to: "users#signup",      as: "sigunup"
+    # get    "/login",         tp: "users#login",       as: "login"
     
 end
