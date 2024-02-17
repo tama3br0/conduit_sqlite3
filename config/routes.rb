@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/new'
     root "articles#index"
     # resources :articles
 
@@ -10,6 +11,9 @@ Rails.application.routes.draw do
     # PATCH  /articles/:id         # 特定の記事を更新するためのアクション
     # DELETE /articles/:id         # 特定の記事を削除するためのアクション
 
+    # Users
+    get    "/signup",        to: "users#new",         as: "signup"
+
     # Articles
     get    "/",              to: "articles#index",    as: "articles"
     get    "/new",           to: "articles#new",      as: "new_article"
@@ -19,8 +23,7 @@ Rails.application.routes.draw do
     patch  "/update/:id",    to: "articles#update",   as: "update_article"
     delete "delete/:id",     to: "articles#destroy",  as: "delete_article"
 
-    # Users
-    # get    "/signup",        to: "users#signup",      as: "sigunup"
+
     # get    "/login",         tp: "users#login",       as: "login"
     
 end
