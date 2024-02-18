@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     # Users
     get    "/signup",        to: "users#new",         as: "signup"
+    resources :users
 
     # Articles
     get    "/",              to: "articles#index",    as: "articles"
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
     get    "/:id",           to: "articles#show",     as: "show_article"
     get    "/:id/edit",      to: "articles#edit",     as: "edit_article"
     patch  "/update/:id",    to: "articles#update",   as: "update_article"
-    delete "delete/:id",     to: "articles#destroy",  as: "delete_article"
+    delete "/delete/:id",    to: "articles#destroy",  as: "delete_article"
 
 
     # get    "/login",         tp: "users#login",       as: "login"

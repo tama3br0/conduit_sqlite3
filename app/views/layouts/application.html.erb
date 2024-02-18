@@ -5,14 +5,21 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <%= csrf_meta_tags %> 
         <%= csp_meta_tag %>
-        <!-- <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> -->
+        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
         <link rel="stylesheet" href="//demo.productionready.io/main.css" />
         <%= javascript_importmap_tags %>
     </head>
 
     <body>
         <%= render "layouts/after_header" %>
-        <%= yield %>
-        <%= render "layouts/footer" %>
+        <div class="container">
+            <% flash.each do |message_type, message| %> <!--|key, value| と認識される-->
+                <div class="alert alert-<%= message_type %>"><%= message %></div>
+            <% end %>
+            <%= yield %>
+            <%= render "layouts/footer" %>
+            <%= debug(params) if Rails.env.development? %>
+        </div>
+
     </body>
 </html>
