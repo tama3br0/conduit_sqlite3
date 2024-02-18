@@ -12,4 +12,9 @@ class User < ApplicationRecord
     has_secure_password # => 入力されたパスワードをハッシュ化＆見られないようにフィルター
     validates :password, presence: true, length: { minimum: 6 }
 
+    def User.digest(string) # クラス変数
+        # 引数に渡された文字列をハッシュ化
+        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost # 三項演算子
+        BCrypt::Password.create(string, cost: cost)
+    end
 end

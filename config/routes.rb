@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/new'
     root "articles#index"
     # resources :articles
 
@@ -15,6 +14,12 @@ Rails.application.routes.draw do
     get    "/signup",        to: "users#new",         as: "signup"
     resources :users
 
+    # Sessions
+    get    "/login",         to: "sessions#new"      
+    post   "/login",         to: "sessions#create"
+    delete "/logout",        to: "sessions#destroy"
+
+
     # Articles
     get    "/",              to: "articles#index",    as: "articles"
     get    "/new",           to: "articles#new",      as: "new_article"
@@ -24,7 +29,5 @@ Rails.application.routes.draw do
     patch  "/update/:id",    to: "articles#update",   as: "update_article"
     delete "/delete/:id",    to: "articles#destroy",  as: "delete_article"
 
-
-    # get    "/login",         tp: "users#login",       as: "login"
     
 end

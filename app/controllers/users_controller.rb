@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            reset_session
+            log_in(@user) # ユーザー登録したらついでにログインもできるようにした
             flash[:success] = "ユーザー情報の登録が完了しました！"
             # GET users/"#{@user.id}"
             redirect_to user_path(@user)

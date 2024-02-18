@@ -1,0 +1,28 @@
+<header>
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">conduit</a>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <%= link_to "Home", root_path, class: "nav-link ion-compose" %>
+                </li>
+                <% if logged_in? %>
+                    <li class="nav-item">
+                        <%= link_to "新規投稿", new_article_path, class: "nav-link ion-compose" %>
+                    </li>
+                    <li class="nav-item"> 
+                        <%= link_to "プロフィール", user_path(current_user.id) %>
+                    </li>
+                    <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete } %>
+                <% else %>
+                    <li class="nav-item">
+                        <%= link_to "ユーザー登録", signup_path, class: "nav-link ion-compose" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "ログイン", login_path, class: "nav-link ion-compose" %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+</header>
